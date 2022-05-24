@@ -1,8 +1,13 @@
 from django.shortcuts import render
+from .models import *
 
 
 def index(request):
-    return render(request, 'edgpress/index.html')
+    all_articles = Article.objects.all()
+    context = {
+        "article": all_articles
+    }
+    return render(request, 'edgpress/index.html', context)
 
 
 def basic_grid(request):
